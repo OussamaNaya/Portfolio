@@ -1109,3 +1109,144 @@ section {
     color: var(--text-muted);
     font-size: 0.9rem;
 }
+
+/* ===================================
+   CV Section
+   =================================== */
+.cv-section {
+    background: var(--bg-primary);
+    position: relative;
+    padding: var(--spacing-xl) 0;
+}
+
+.cv-content {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+.cv-tabs {
+    display: flex;
+    background: var(--bg-secondary);
+    padding: 0.5rem;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--glass-border);
+    position: relative;
+    z-index: 10;
+}
+
+.cv-tab {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+    cursor: pointer;
+    border-radius: var(--radius-full);
+    transition: var(--transition-normal);
+}
+
+.cv-tab.active {
+    background: var(--accent-gradient);
+    color: white;
+    box-shadow: var(--shadow-glow);
+}
+
+.cv-tab:not(.active):hover {
+    color: var(--text-primary);
+}
+
+.cv-display-card {
+    width: 100%;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-lg);
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: var(--transition-normal);
+    animation: fadeInScale 0.4s ease-out;
+}
+
+.cv-display-card:hover {
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-lg);
+}
+
+.cv-icon-container {
+    width: 80px;
+    height: 80px;
+    background: var(--bg-tertiary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    border: 2px solid var(--accent-primary);
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+}
+
+.cv-main-icon {
+    font-size: 2.5rem;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.cv-info h3 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.cv-info p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.cv-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .cv-tabs {
+        flex-direction: column;
+        width: 100%;
+        padding: 1rem;
+        background: transparent;
+        border: none;
+        gap: 1rem;
+    }
+
+    .cv-tab {
+        width: 100%;
+        justify-content: center;
+        background: var(--bg-secondary);
+        border: 1px solid var(--glass-border);
+    }
+    
+    .cv-tab.active {
+        background: var(--accent-gradient);
+        border-color: transparent;
+    }
+
+    .cv-display-card {
+        padding: 2rem 1.5rem;
+    }
+}

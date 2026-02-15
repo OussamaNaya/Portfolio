@@ -569,4 +569,65 @@ window.addEventListener('load', () => {
 // ===================================
 console.log('%c👋 Bonjour! ', 'font-size: 20px; font-weight: bold; color: #00d9ff;');
 console.log('%cMerci de visiter mon portfolio!', 'font-size: 14px; color: #a855f7;');
-console.log('%cSi vous cherchez un développeur Full Stack passionné, contactez-moi! 🚀', 'font-size: 12px; color: #b4b4b4;');
+
+// ===================================
+// CV Switcher Logic
+// ===================================
+const cvTabs = document.querySelectorAll('.cv-tab');
+const cvIcon = document.getElementById('cv-icon');
+const cvTitle = document.getElementById('cv-title');
+const cvDesc = document.getElementById('cv-desc');
+const cvDownloadBtn = document.getElementById('cv-download-btn');
+const cvPreviewBtn = document.getElementById('cv-preview-btn');
+
+// CV Data
+const cvData = {
+    dev: {
+        title: 'Développeur Web Full Stack',
+        desc: 'Expertise en MERN Stack, Java JEE, Spring Boot et .NET',
+        icon: 'fa-laptop-code',
+        file: 'cvs/CV_2026-01-26_OUSSAMA_NAYA Développeur Web Full-Stack.pdf'
+    },
+    ai: {
+        title: 'Data Scientist & AI Engineer',
+        desc: 'Spécialisé en Machine Learning, Deep Learning, NLP et LLMs',
+        icon: 'fa-brain',
+        file: 'cvs/CV_2025-09-22_OUSSAMA_NAYA- Data Scientist & AI Engineering.pdf'
+    }
+};
+
+if (cvTabs.length > 0) {
+    cvTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Remove active class from all tabs
+            cvTabs.forEach(t => t.classList.remove('active'));
+            // Add active class to clicked tab
+            tab.classList.add('active');
+
+            const type = tab.getAttribute('data-cv');
+            const data = cvData[type];
+
+            // Update content with animation
+            const card = document.querySelector('.cv-display-card');
+            card.style.opacity = '0';
+            card.style.transform = 'scale(0.95)';
+
+            setTimeout(() => {
+                // Update text and icon
+                cvTitle.textContent = data.title;
+                cvDesc.textContent = data.desc;
+
+                // Update icon class
+                cvIcon.className = `fas ${data.icon} cv-main-icon`;
+
+                // Update links
+                cvDownloadBtn.href = data.file;
+                cvPreviewBtn.href = data.file;
+
+                // Show card again
+                card.style.opacity = '1';
+                card.style.transform = 'scale(1)';
+            }, 200);
+        });
+    });
+}
